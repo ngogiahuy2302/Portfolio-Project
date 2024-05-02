@@ -1,0 +1,14 @@
+Approach
+
++ First get data from "Variant SKU" column and put every thing into a list name SKU. This column can be found in an excel file
+
++ Check if SKU exist using this technique : go to site tefal.com.sg there is a /search function with method = "get". Search the site for every sku from list. The search will return a result with <div class="item homologation-productResult-0"> in HTML page. Expand this <div> check to see if its subbranch <div class="caption"> contain any txt that resemble SKU if yes the return item found else return not "SKU" +  "not found". Output everything into 2 seperate (one name Found.txt which contains every sku found the other named NotFound.txt which contain the rest) text file located in a main folder
+
++ For each line in Found.txt create a folder name with "SKU" found in Found.txt file
+
++ In every SKU folder in sub_folder1 create a txt file named SourcecodeHTML.txt. Using the check SKU existence method we can find the link adress for every found SKU in Found.txt. Next we dowload the source code of each sku and then output the source code into SourcecodeHTML.txt 
+
++ In this step we will clean the new source code for information. After cleaning text the information will be description value for each SKU. First we isolate everything between <div data-visible="4" id="EssentialList" class="scrollable-lame"></div>. Between these element there are many <li class> item. In these <li class> there are many <h3>text</h3><p>text2</p>. I want to extract these text and add a space between text and text2 (from h3 and p) out these text into correspond subfolder and the text file is named Textprepared.txt
+
++Next we added the text in Textprepared.txt previously prepared. And put into excel file with the correct SKU. Note that sku information is the subfolder's name. Search another excel file and then fill text from Textprepared.txt into Description column with correspon SKU from Variant SKU column 
+
